@@ -1,4 +1,4 @@
 public class Pokemon {
     String nome, tipo;
-    int id, nivel;
+    int id, nivelmin, nivelmax;
 }
