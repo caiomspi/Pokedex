@@ -21,9 +21,29 @@ public class Admin{
         System.out.println("\n\nPokémon adicionado com sucesso!\n");
     }
 
-    public static void listar_ex(){
+    //função para listar os pokemon adicionados
+    public static void listar_adm(){
         for(Pokemon poke : Admin.pokexistentes){
             System.out.println("\nNome: " + poke.nome + "\n" + "Tipo: " + poke.tipo + "\n" + "Nível: " + poke.nivelmin + "-" + poke.nivelmax + "\n" + "ID: " + poke.id + "\n");
         }
+    }
+
+    public static void remover_adm(){
+        int escolha, cont=0;
+
+        System.out.println("Pokémon adicionados:");
+        for(Pokemon poke : Admin.pokexistentes){
+            System.out.println("\nNome: " + poke.nome + "\n" + "Tipo: " + poke.tipo + "\n" + "Nível: " + poke.nivelmin + "-" + poke.nivelmax + "\n" + "ID: " + poke.id + "\n");
+        }
+        System.out.print("Escreva o ID do Pokémon que será removido: ");
+        escolha=Integer.valueOf(Main.sc.nextLine());
+        for(Pokemon poke : Admin.pokexistentes){
+            if(escolha==poke.id){
+                Admin.pokexistentes.remove(cont);
+                break;
+            }
+            cont++;
+        }
+        System.out.println("\nRemovido com sucesso!\n");
     }
 }

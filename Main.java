@@ -29,11 +29,12 @@ public static void main(String[] args){
                                 break;
 
                             case 2: //remover pokemons
-
+                                Admin.remover_adm();
+                                System.out.println("Teste 1");
                                 break;
                             
                             case 3: //listar pokemons existentes
-                                Admin.listar_ex();
+                                Admin.listar_adm();
                                 break;
                             
                             case 4: //sair
