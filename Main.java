@@ -5,7 +5,6 @@ public static void main(String[] args){
     //declarando variaveis
     int resp=0, senha=123;
     
-
     //menu
     System.out.println("Bem vindo ao Simulador de Pokédex\n");
     while(resp!=3){
@@ -13,9 +12,7 @@ public static void main(String[] args){
         resp=Integer.valueOf(sc.nextLine()); //usando assim pois o \n estava ficando no buffer e conflitando com o prox nextLine()
             switch(resp){
                 case 1: //tela para entrar no jogo
-                    while(Jogo.resposta!=3){
-                        Jogo.jogo();
-                    }
+                    Jogo.jogo();
                     break;
                     
                 case 2: //tela para editar pokemons que aparecem
