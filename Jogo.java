@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class Jogo{
+    static int resposta=0;
     static ArrayList<Pokemon> pokelista= new ArrayList<>();
     static Random gerador = new Random();
 
@@ -11,21 +12,21 @@ public class Jogo{
     }
 
     public static void jogo(){
-        int resposta=0, number, i, nivel, chance;
+        int number, i, nivel, chance;
         if(Jogo.pokelista.size()!=Admin.pokexistentes.size()){
             Jogo.album();
         }
         System.out.print("-------MENU-------\n1 - Procurar novo pokémon\n2 - Listar pokémon pegos\n3 - Sair\nResposta: ");
-        resposta = Integer.valueOf(Main.sc.nextLine());
-        switch(resposta){
+        Jogo.resposta = Integer.valueOf(Main.sc.nextLine());
+        switch(Jogo.resposta){
             //Procurar novo pokémon
             case 1:
                 number = Jogo.gerador.nextInt(Jogo.pokelista.size());
                 chance = Jogo.gerador.nextInt(10);
                 nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
                 System.out.print("Apareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
-                resposta=Integer.valueOf(Main.sc.nextLine());
-                if(resposta==1){
+                Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
+                if(Jogo.resposta==1){
                     if(chance%2==0){ //chance de 50% de captura
                         for(i=0;i<Jogo.pokelista.size();i++){
                             if(Jogo.pokelista.get(i).nome.equals(Jogo.pokelista.get(number).nome)){
@@ -42,7 +43,7 @@ public class Jogo{
                 else{
                     System.out.println("Voce Fugiu!");
                 }
-                resposta=1;
+                Jogo.resposta=1;
 
                 break;
             

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class Admin{
-
     static ArrayList<Pokemon> pokexistentes = new ArrayList<>();
     static int id=1;
 

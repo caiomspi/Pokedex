@@ -13,13 +13,16 @@ public static void main(String[] args){
         resp=Integer.valueOf(sc.nextLine()); //usando assim pois o \n estava ficando no buffer e conflitando com o prox nextLine()
             switch(resp){
                 case 1: //tela para entrar no jogo
-                    Jogo.jogo();
+                    while(Jogo.resposta!=3){
+                        Jogo.jogo();
+                    }
                     break;
                     
                 case 2: //tela para editar pokemons que aparecem
                     System.out.print("\nDigite a senha: ");
                     resp=Integer.valueOf(sc.nextLine());
                     if(resp==senha){
+                        while(resp!=4){
                         System.out.println("\nBem vindo!\n");
                         System.out.print("-------MENU-------\n1 - Adicionar Pokémon\n2 - Remover Pokémon\n3 - Listar Pokémon\n4 - Sair\n\nResposta: ");
                         resp=Integer.valueOf(sc.nextLine());
@@ -43,8 +46,8 @@ public static void main(String[] args){
                             default:
                                 System.out.println("Opção Inválida!\n");
                         }
-                        resp=2;
                     }
+                }
                     else{
                         System.out.println("\nSenha inválida!");
                     }
