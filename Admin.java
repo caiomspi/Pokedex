@@ -16,7 +16,7 @@ public class Admin{
         poke.nivelmax=Integer.valueOf(Main.sc.nextLine());
         poke.id=Admin.id;
         Admin.id++;
-        poke.flag=false;
+        poke.capturado=false;
         Admin.pokexistentes.add(poke);
         System.out.println("\n\nPokémon adicionado com sucesso!\n");
     }

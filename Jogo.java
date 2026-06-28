@@ -16,7 +16,7 @@ public class Jogo{
         if(Jogo.pokelista.size()!=Admin.pokexistentes.size()){
             Jogo.album();
         }
-        System.out.print("-------MENU-------\n1 - Procurar novo pokémon\n2 - Listar pokémon pegos\n3 - Sair\nResposta: ");
+        System.out.print("\n-------MENU-------\n1 - Procurar novo pokémon\n2 - Listar pokémon pegos\n3 - Sair\nResposta: ");
         Jogo.resposta = Integer.valueOf(Main.sc.nextLine());
         switch(Jogo.resposta){
             //Procurar novo pokémon
@@ -24,17 +24,17 @@ public class Jogo{
                 number = Jogo.gerador.nextInt(Jogo.pokelista.size());
                 chance = Jogo.gerador.nextInt(10);
                 nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
-                System.out.print("Apareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
+                System.out.print("\nApareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
                 Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
                 if(Jogo.resposta==1){
                     if(chance%2==0){ //chance de 50% de captura
                         for(i=0;i<Jogo.pokelista.size();i++){
                             if(Jogo.pokelista.get(i).nome.equals(Jogo.pokelista.get(number).nome)){
                                 Jogo.pokelista.get(i).nivel=nivel;
-                                Jogo.pokelista.get(i).flag=true;
+                                Jogo.pokelista.get(i).capturado=true;
                             }
                         }
-                        System.out.println("Voce capturou ele!");
+                        System.out.println("\nVoce capturou ele!");
                     }
                     else{
                         System.out.println("Voce nao capturou ele...");
@@ -50,7 +50,7 @@ public class Jogo{
             //Listar pokémon capturados
             case 2:
                 for(i=0;i<Jogo.pokelista.size();i++){
-                    if(Jogo.pokelista.get(i).flag==true){
+                    if(Jogo.pokelista.get(i).capturado==true){
                         System.out.println("Nome: " + Jogo.pokelista.get(i).nome + "\nNivel: " + Jogo.pokelista.get(i).nivel + "\n");
                     }
                     else{
