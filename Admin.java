@@ -29,7 +29,7 @@ public class Admin{
     }
 
     public static void remover_adm(){
-        int escolha, cont=0;
+        int escolha, cont=0, i;
 
         System.out.println("Pokémon adicionados:");
         for(Pokemon poke : Admin.pokexistentes){
@@ -37,12 +37,10 @@ public class Admin{
         }
         System.out.print("Escreva o ID do Pokémon que será removido: ");
         escolha=Integer.valueOf(Main.sc.nextLine());
-        for(Pokemon poke : Admin.pokexistentes){
-            if(escolha==poke.id){
-                Admin.pokexistentes.remove(cont);
-                break;
+        for(i=0;i<Admin.pokexistentes.size();i++){
+            if(escolha==Admin.pokexistentes.get(i).id){
+                Admin.pokexistentes.remove(i);
             }
-            cont++;
         }
         System.out.println("\nRemovido com sucesso!\n");
     }
