@@ -11,7 +11,13 @@ public static void main(String[] args){
     while(resp!=3){
         Main.loop=true;
         System.out.print("-------MENU-------\n1 - Jogar\n2 - Admin\n3 - Sair\n\nResposta: ");
-        resp=Integer.valueOf(sc.nextLine()); //usando assim pois o \n estava ficando no buffer e conflitando com o prox nextLine()
+        
+        try {
+            resp=Integer.valueOf(sc.nextLine());
+        }
+        catch (Exception e){
+            
+        }
             switch(resp){
                 case 1: //tela para entrar no jogo
                 while(Main.loop){

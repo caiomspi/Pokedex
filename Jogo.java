@@ -15,14 +15,20 @@ public class Jogo{
         if(Jogo.pokelista.size()!=Admin.pokexistentes.size()){ //verificacao se houve mudança na pokedex
                 Jogo.album();
             }
+
         if(Jogo.pokelista.size()==0){ //verificacao se existem pokemons cadastrados
             System.out.println("Nenhum pokémon encontrado!");
             Main.loop = false;
         }
+
         else{
             int number, i, nivel, chance;
             System.out.print("\n-------MENU-------\n1 - Procurar novo pokémon\n2 - Listar pokémon pegos\n3 - Sair\nResposta: ");
-            Jogo.resposta = Integer.valueOf(Main.sc.nextLine());
+            try {
+                Jogo.resposta = Integer.valueOf(Main.sc.nextLine());
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
             switch(Jogo.resposta){
                 //Procurar novo pokémon
                 case 1:
@@ -31,9 +37,11 @@ public class Jogo{
                     if(Jogo.pokelista.get(number).nivelmax!=Jogo.pokelista.get(number).nivelmin){
                         nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
                     }
+
                     else{
                         nivel=Jogo.pokelista.get(number).nivelmax;
                     }
+
                     System.out.print("\nApareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
                     Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
                     if(Jogo.resposta==1){
@@ -73,6 +81,9 @@ public class Jogo{
                 System.out.println("Obrigado por Jogar!");
                 Main.loop=false;
                 break;
+            
+            default:
+                System.out.println("Opção inválida!");
             }
         }
     }
