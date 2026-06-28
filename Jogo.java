@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class Jogo{
-    static int resposta=0;
+    static int resposta=1;
     static ArrayList<Pokemon> pokelista= new ArrayList<>();
     static Random gerador = new Random();
 
@@ -15,8 +15,11 @@ public class Jogo{
         if(Jogo.pokelista.size()!=Admin.pokexistentes.size()){ //verificacao se houve mudança na pokedex
                 Jogo.album();
             }
+        else{
+        }
         if(Jogo.pokelista.size()==0){ //verificacao se existem pokemons cadastrados
             System.out.println("Nenhum pokémon encontrado!");
+            Main.loop=false;
             Jogo.resposta=3;
         }
         else{
@@ -28,7 +31,12 @@ public class Jogo{
                 case 1:
                     number = Jogo.gerador.nextInt(Jogo.pokelista.size());
                     chance = Jogo.gerador.nextInt(10);
-                    nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
+                    if(Jogo.pokelista.get(number).nivelmin!=Jogo.pokelista.get(number).nivelmax){
+                        nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
+                    }
+                    else{
+                        nivel=Jogo.pokelista.get(number).nivelmin;
+                    }
                     System.out.print("\nApareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
                     Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
                     if(Jogo.resposta==1){
@@ -66,6 +74,7 @@ public class Jogo{
             //Sair
             case 3:
                 System.out.println("Obrigado por Jogar!");
+                Main.loop=false;
                 break;
             }
         }
