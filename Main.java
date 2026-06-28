@@ -13,7 +13,8 @@ public static void main(String[] args){
         resp=Integer.valueOf(sc.nextLine()); //usando assim pois o \n estava ficando no buffer e conflitando com o prox nextLine()
             switch(resp){
                 case 1: //tela para entrar no jogo
-                    
+                    Jogo.jogo();
+                    resp=3;
                     break;
                     
                 case 2: //tela para editar pokemons que aparecem
@@ -30,7 +31,6 @@ public static void main(String[] args){
 
                             case 2: //remover pokemons
                                 Admin.remover_adm();
-                                System.out.println("Teste 1");
                                 break;
                             
                             case 3: //listar pokemons existentes
