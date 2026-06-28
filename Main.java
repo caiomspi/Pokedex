@@ -14,7 +14,6 @@ public static void main(String[] args){
             switch(resp){
                 case 1: //tela para entrar no jogo
                     Jogo.jogo();
-                    resp=3;
                     break;
                     
                 case 2: //tela para editar pokemons que aparecem
