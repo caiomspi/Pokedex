@@ -4,6 +4,7 @@ public class Jogo{
     static int resposta=0;
     static ArrayList<Pokemon> pokelista= new ArrayList<>();
     static Random gerador = new Random();
+    boolean loop=false;
 
     public static void album(){ //funcao para cadastrar pokemons existentes na pokedex
         for(int i=0;i<Admin.pokexistentes.size();i++){
@@ -12,6 +13,7 @@ public class Jogo{
     }
 
     public static void jogo(){ //funcao main do jogo
+        Jogo j = new Jogo();
         if(Jogo.pokelista.size()!=Admin.pokexistentes.size()){ //verificacao se houve mudança na pokedex
                 Jogo.album();
             }
@@ -27,6 +29,7 @@ public class Jogo{
             try {
                 Jogo.resposta = Integer.valueOf(Main.sc.nextLine());
             } catch (Exception e) {
+                System.out.println("Escolha inválida!");
                 // TODO: handle exception
             }
             switch(Jogo.resposta){
@@ -34,6 +37,8 @@ public class Jogo{
                 case 1:
                     number = Jogo.gerador.nextInt(Jogo.pokelista.size());
                     chance = Jogo.gerador.nextInt(10);
+
+                    //calculo para nível igual para caso de bugs
                     if(Jogo.pokelista.get(number).nivelmax!=Jogo.pokelista.get(number).nivelmin){
                         nivel = Jogo.gerador.nextInt(Jogo.pokelista.get(number).nivelmax - Jogo.pokelista.get(number).nivelmin) + Jogo.pokelista.get(number).nivelmin;
                     }
@@ -42,8 +47,16 @@ public class Jogo{
                         nivel=Jogo.pokelista.get(number).nivelmax;
                     }
 
-                    System.out.print("\nApareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
-                    Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
+                    while(j.loop==false){
+                        System.out.print("\nApareceu um pokemon!\n\nNome: " + Jogo.pokelista.get(number).nome + "\nNivel: " + nivel + "\n\n1 - Capturar\n2 - Fugir\n\nResposta: ");
+                        try {
+                            Jogo.resposta=Integer.valueOf(Main.sc.nextLine());
+                            j.loop=true;
+                        } catch (Exception e) {
+                            System.out.println("Escolha inválida!");
+                            // TODO: handle exception
+                        }
+                    }
                     if(Jogo.resposta==1){
                         if(chance%2==0){ //chance de 50% de captura
                             for(i=0;i<Jogo.pokelista.size();i++){

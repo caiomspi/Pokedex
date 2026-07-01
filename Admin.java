@@ -3,8 +3,10 @@ import java.util.ArrayList;
 public class Admin{
     static ArrayList<Pokemon> pokexistentes = new ArrayList<>();
     static int id=1;
+    boolean loop=false;
 
     public static void adicionar(){
+        Admin a = new Admin();
         int i;
         Pokemon poke = new Pokemon();
         System.out.print("\nQual o nome do pokémon a ser adicionado: ");
@@ -17,10 +19,26 @@ public class Admin{
         }
         System.out.print("Qual o tipo do pokémon a ser adicionado: ");
         poke.tipo=Main.sc.nextLine();
-        System.out.print("Qual o nível minímo em que ele poderá aparecer: ");
-        poke.nivelmin=Integer.valueOf(Main.sc.nextLine());;
-        System.out.print("Qual o nível máximo em que ele poderá aparecer: ");
-        poke.nivelmax=Integer.valueOf(Main.sc.nextLine());
+        while(a.loop==false){
+            System.out.print("Qual o nível minímo em que ele poderá aparecer: ");
+            try {
+                poke.nivelmin=Integer.valueOf(Main.sc.nextLine());
+                a.loop=true;
+            } catch (Exception e) {
+                System.out.println("Digite um número válido!");
+                // TODO: handle exception
+            }
+        }
+        a.loop=false;
+        while(a.loop==false){
+            System.out.print("Qual o nível máximo em que ele poderá aparecer: ");
+            try {
+                poke.nivelmax=Integer.valueOf(Main.sc.nextLine());
+                a.loop=true;
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
         poke.id=Admin.id;
         Admin.id++;
         poke.capturado = false;

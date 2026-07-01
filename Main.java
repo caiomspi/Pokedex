@@ -16,7 +16,7 @@ public static void main(String[] args){
             resp=Integer.valueOf(sc.nextLine());
         }
         catch (Exception e){
-            
+            System.out.println("Digite um valor válido!");
         }
             switch(resp){
                 case 1: //tela para entrar no jogo
